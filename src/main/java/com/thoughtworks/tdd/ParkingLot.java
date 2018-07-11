@@ -13,6 +13,7 @@ public class ParkingLot {
         Receipt reciept = new Receipt();
         if(this.size>0){
             map.put(reciept,car);
+            this.size--;
         }
         else{
             throw new ParkingLotFullException();
@@ -22,6 +23,11 @@ public class ParkingLot {
 
 
     public Car unPark(Receipt receipt) {
+        this.size++;
         return map.get(receipt);
+    }
+
+    public boolean isFull() {
+        return size==0;
     }
 }
