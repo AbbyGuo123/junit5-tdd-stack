@@ -3,6 +3,8 @@ package com.thoughtworks.tdd;
 public class FizzBuzz {
     public String fizzBuzzWithNumber(int number) {
         StringBuffer result = new StringBuffer();
+        if(String.valueOf(number).indexOf('3')!=-1)
+            return "Fizz";
         if(number % 3 == 0){
             result.append("Fizz");
         }

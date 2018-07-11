@@ -101,7 +101,7 @@ public class FizzBuzzTest {
         //when
         String result = fizzBuzz.fizzBuzzWithNumber(number);
         //then
-        assertThat(result ,is("BuzzWhizz"));
+        assertThat(result ,is("Fizz"));
     }
 
     @Test
