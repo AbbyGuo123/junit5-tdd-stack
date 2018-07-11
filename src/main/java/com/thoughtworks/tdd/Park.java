@@ -7,6 +7,9 @@ public class Park {
     }
 
     public boolean parking(Car car) {
-        return true;
+        if(size>0)
+            return true;
+        else
+            return false;
     }
 }
