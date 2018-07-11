@@ -4,30 +4,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    int size;
-    Map<Receipt,Car> map = new HashMap<>();
+    private int size;
+    private Map<Receipt, Car> map = new HashMap<>();
+
     public ParkingLot(int size) {
         this.size = size;
     }
-    public Receipt park(Car car){
-        Receipt reciept = new Receipt();
-        if(this.size>0){
-            map.put(reciept,car);
-            this.size--;
-        }
-        else{
+
+    public Receipt park(Car car) {
+        if (isFull())
             throw new ParkingLotFullException();
-        }
+        Receipt reciept = new Receipt();
+        map.put(reciept, car);
         return reciept;
     }
 
 
     public Car unPark(Receipt receipt) {
-        this.size++;
-        return map.get(receipt);
+        return map.remove(receipt);
     }
 
     public boolean isFull() {
-        return size==0;
+        return this.size == map.size();
     }
 }
