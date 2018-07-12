@@ -22,8 +22,9 @@ public class ParkinglogTest {
         }
 
     }
+
     @Test
-    public void should_park_failed_given_parking_lot_is_full(){
+    public void should_park_failed_given_parking_lot_is_full() {
         ParkingLot parkingLot = new ParkingLot(0);
 
         try {
@@ -35,7 +36,7 @@ public class ParkinglogTest {
     }
 
     @Test
-    public void should_get_specific_car_when_call_unPark_given_receipt_is_right(){
+    public void should_get_specific_car_when_call_unPark_given_receipt_is_right() {
         ParkingLot parkingLot = new ParkingLot(1);
 
         Car theCar = new Car();
@@ -44,21 +45,23 @@ public class ParkinglogTest {
         assertThat(parkingLot.unPark(receipt), is(theCar));
 
     }
+
     @Test
-    public void should_be_true_when_call_isFull_given_parking_lot_is_full(){
+    public void should_be_true_when_call_isFull_given_parking_lot_is_full() {
         ParkingLot parkingLot = new ParkingLot(0);
 
         assertThat(parkingLot.isFull(), is(true));
     }
+
     @Test
-    public void should_be_false_when_call_isFull_given_parking_lot_is_not_full(){
+    public void should_be_false_when_call_isFull_given_parking_lot_is_not_full() {
         ParkingLot parkingLot = new ParkingLot(1);
 
         assertThat(parkingLot.isFull(), is(false));
     }
 
     @Test
-    public void should_be_false_when_call_isFull_given_a_full_parking_lot_take_out_a_car(){
+    public void should_be_false_when_call_isFull_given_a_full_parking_lot_take_out_a_car() {
         ParkingLot parkingLot = new ParkingLot(1);
 
         Car theCar = new Car();
@@ -67,11 +70,13 @@ public class ParkinglogTest {
 
         assertThat(parkingLot.isFull(), is(false));
     }
-    public static void shoudNotThrowException(){
+
+    public static void shoudNotThrowException() {
 //        throw new ParkingLotFullException();
     }
+
     @Test
-    public void should_fail(){
+    public void should_fail() {
 
         System.out.println("Hello I am OK");
         try {
@@ -83,8 +88,9 @@ public class ParkinglogTest {
         System.out.println("Hello I am called");
 
     }
+    //单次停车
     @Test
-    public void should_be_successfully_given_parking_lot_is_not_full(){
+    public void should_be_successfully_given_parking_lot_is_not_full() {
         ParkingLot parkingLot1 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
         pakingLotList.add(parkingLot1);
@@ -96,9 +102,9 @@ public class ParkinglogTest {
         }
 
     }
-
+    //多次停车，不够车位
     @Test
-    public void should_be_failed_given_parking_lot_is_full(){
+    public void should_be_failed_given_parking_lot_is_full() {
         ParkingLot parkingLot1 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
         pakingLotList.add(parkingLot1);
@@ -111,9 +117,9 @@ public class ParkinglogTest {
         }
 
     }
-
+    //多次停车
     @Test
-    public void should_be_successfully_given_parking_lot_parkinglot_second_is_not_full(){
+    public void should_be_successfully_given_parking_lot_parkinglot_second_is_not_full() {
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
@@ -128,9 +134,9 @@ public class ParkinglogTest {
         }
 
     }
-
+    //单次取车
     @Test
-    public void should_get_specific_car_when_call_unPark_given_receipt_is_right_by_parkingBoy(){
+    public void should_get_specific_car_when_call_unPark_given_receipt_is_right_by_parkingBoy() {
         ParkingLot parkingLot1 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
         pakingLotList.add(parkingLot1);
@@ -140,9 +146,9 @@ public class ParkinglogTest {
         assertThat(parkingBoy.unPark(receipt), is(theCar));
 
     }
-
+    //多次取车
     @Test
-    public void should_be_true_when_callpark_2_unPark_the_first_one(){
+    public void should_be_true_when_callpark_2_unPark_the_first_one() {
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
@@ -160,8 +166,9 @@ public class ParkinglogTest {
 
     }
 
+    //顺序取车
     @Test
-    public void should_be_true_given_parkingBoy_unpark(){
+    public void should_be_true_given_parkingBoy_unpark_by_order() {
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
@@ -180,24 +187,20 @@ public class ParkinglogTest {
 
     }
 
+    //取过车的票据取车
     @Test
-    public void should_be_throw_NotTrueReceiptException_when_callunpark_given_used_receipt(){
+    public void should_be_throw_NotTrueReceiptException_when_callunpark_given_used_receipt() {
         ParkingLot parkingLot1 = new ParkingLot(1);
-        ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
         pakingLotList.add(parkingLot1);
-        pakingLotList.add(parkingLot2);
         ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
         try {
             Receipt receipt = parkingBoy.parking(new Car());
-            Receipt receipt1 = parkingBoy.parking(new Car());
             parkingBoy.unPark(receipt);
             parkingBoy.unPark(receipt);
-            assertThat(parkingLot1.isFull(), is(false));
-
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
-        }catch (NotTrueReceiptException exception) {
+        } catch (NotTrueReceiptException exception) {
             fail("The Reciept is Used");
         }
 

@@ -10,14 +10,12 @@ public class ParkingBoy {
     }
 
     public Receipt parking(Car car) {
-        int num =0;
         Receipt receipt = null;
         for(ParkingLot parkingLot:pakingLotList){
             try {
                 receipt = parkingLot.park(car);
                 break;
             }catch (ParkingLotFullException e){
-                num++;
             }
         }
         if(receipt==null)
