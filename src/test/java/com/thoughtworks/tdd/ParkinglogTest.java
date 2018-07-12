@@ -142,7 +142,7 @@ public class ParkinglogTest {
     }
 
     @Test
-    public void should_get_specific_car_when_call_unPark_more_given_receipt_is_right_by_parkingBoy(){
+    public void should_be_true_when_callpark_2_unPark_the_first_one(){
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
@@ -161,7 +161,7 @@ public class ParkinglogTest {
     }
 
     @Test
-    public void should_be_false_given_parking_lot_parkinglot_unpark_is_not_full(){
+    public void should_be_true_given_parkingBoy_unpark(){
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
@@ -180,6 +180,28 @@ public class ParkinglogTest {
 
     }
 
+    @Test
+    public void should_be_throw_NotTrueReceiptException_when_callunpark_given_used_receipt(){
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        pakingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        try {
+            Receipt receipt = parkingBoy.parking(new Car());
+            Receipt receipt1 = parkingBoy.parking(new Car());
+            parkingBoy.unPark(receipt);
+            parkingBoy.unPark(receipt);
+            assertThat(parkingLot1.isFull(), is(false));
+
+        } catch (ParkingLotFullException exception) {
+            fail("should park successfully");
+        }catch (NotTrueReceiptException exception) {
+            fail("The Reciept is Used");
+        }
+
+    }
 
 
 }

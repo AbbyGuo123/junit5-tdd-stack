@@ -32,6 +32,7 @@ public class ParkingBoy {
                 car = parkingLot.unPark(receipt);
             }
         }
+        if(car==null) throw new NotTrueReceiptException();
         return car;
     }
 }
