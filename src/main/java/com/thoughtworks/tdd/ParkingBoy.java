@@ -12,10 +12,9 @@ public class ParkingBoy {
     public Receipt parking(Car car) {
         Receipt receipt = null;
         for(ParkingLot parkingLot:pakingLotList){
-            try {
+            if(!parkingLot.isFull()){
                 receipt = parkingLot.park(car);
                 break;
-            }catch (ParkingLotFullException e){
             }
         }
         if(receipt==null)
