@@ -117,13 +117,14 @@ public class ParkinglogTest {
 
     @Test
     public void should_be_successfully_given_parking_lot_parkinglot_second_is_not_full(){
-        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
         pakingLotList.add(parkingLot1);
         pakingLotList.add(parkingLot2);
         ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
         try {
+            parkingBoy.parking(new Car());
             parkingBoy.parking(new Car());
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
@@ -132,20 +133,34 @@ public class ParkinglogTest {
     }
 
     @Test
-    public void should_be_successfully_given_parking_lot_parkinglot_unpark_is_not_full(){
+    public void should_be_false_given_parking_lot_parkinglot_unpark_is_not_full(){
         ParkingLot parkingLot1 = new ParkingLot(1);
-        ParkingLot parkingLot2 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> pakingLotList = new ArrayList<>();
         pakingLotList.add(parkingLot1);
         pakingLotList.add(parkingLot2);
-        Receipt receipt = parkingLot1.park(new Car());
-        parkingLot1.unPark(receipt);
         ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
         try {
+            Receipt receipt = parkingBoy.parking(new Car());
             Receipt receipt1 = parkingBoy.parking(new Car());
+            parkingBoy.unPark(receipt);
+            assertThat(parkingLot1.isFull(), is(false));
+
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         }
+
+    }
+
+    @Test
+    public void should_get_specific_car_when_call_unPark_given_receipt_is_right_by_parkingBoy(){
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        Car theCar = new Car();
+        Receipt receipt = parkingBoy.parking(theCar);
+        assertThat(parkingBoy.unPark(receipt), is(theCar));
 
     }
 

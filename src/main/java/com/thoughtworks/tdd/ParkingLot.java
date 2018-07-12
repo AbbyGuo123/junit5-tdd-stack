@@ -27,4 +27,8 @@ public class ParkingLot {
     public boolean isFull() {
         return this.size == map.size();
     }
+
+    public boolean isTheCarInTheParkingLot(Receipt receipt) {
+        return this.map.get(receipt)!= null;
+    }
 }

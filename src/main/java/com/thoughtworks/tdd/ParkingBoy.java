@@ -10,19 +10,28 @@ public class ParkingBoy {
     }
 
     public Receipt parking(Car car) {
-        int num = 0;
+        int num =0;
         Receipt receipt = null;
         for(ParkingLot parkingLot:pakingLotList){
             try {
                 receipt = parkingLot.park(car);
-
-            }catch (ParkingLotFullException exception){
+                break;
+            }catch (ParkingLotFullException e){
                 num++;
             }
-
         }
-        if(num == pakingLotList.size())
-            throw new ParkingLotFullException();
+        if(receipt==null)
+             throw new ParkingLotFullException();
         return receipt;
+    }
+
+    public Car unPark(Receipt receipt) {
+        Car car = null;
+        for(ParkingLot parkingLot:pakingLotList) {
+            if(parkingLot.isTheCarInTheParkingLot(receipt)){
+                car = parkingLot.unPark(receipt);
+            }
+        }
+        return car;
     }
 }
