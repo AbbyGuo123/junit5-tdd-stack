@@ -142,7 +142,7 @@ public class ParkinglogTest {
         parkingLot1.unPark(receipt);
         ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
         try {
-            parkingBoy.parking(new Car());
+            Receipt receipt1 = parkingBoy.parking(new Car());
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         }

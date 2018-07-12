@@ -9,11 +9,13 @@ public class ParkingBoy {
         this.pakingLotList = pakingLotList;
     }
 
-    public void parking(Car car) {
+    public Receipt parking(Car car) {
         int num = 0;
+        Receipt receipt = null;
         for(ParkingLot parkingLot:pakingLotList){
             try {
-                parkingLot.park(car);
+                receipt = parkingLot.park(car);
+
             }catch (ParkingLotFullException exception){
                 num++;
             }
@@ -21,5 +23,6 @@ public class ParkingBoy {
         }
         if(num == pakingLotList.size())
             throw new ParkingLotFullException();
+        return receipt;
     }
 }
