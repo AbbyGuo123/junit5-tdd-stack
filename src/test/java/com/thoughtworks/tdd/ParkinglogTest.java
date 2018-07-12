@@ -2,6 +2,9 @@ package com.thoughtworks.tdd;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -80,6 +83,70 @@ public class ParkinglogTest {
         System.out.println("Hello I am called");
 
     }
+    @Test
+    public void should_be_successfully_given_parking_lot_is_not_full(){
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        pakingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        try {
+            parkingBoy.parking(new Car());
+        } catch (ParkingLotFullException exception) {
+            fail("should park successfully");
+        }
 
+    }
+
+    @Test
+    public void should_be_failed_given_parking_lot_is_full(){
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(0);
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        pakingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        try {
+            parkingBoy.parking(new Car());
+        } catch (ParkingLotFullException exception) {
+            fail("should park successfully");
+        }
+
+    }
+
+    @Test
+    public void should_be_successfully_given_parking_lot_parkinglot_second_is_not_full(){
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        pakingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        try {
+            parkingBoy.parking(new Car());
+        } catch (ParkingLotFullException exception) {
+            fail("should park successfully");
+        }
+
+    }
+
+    @Test
+    public void should_be_successfully_given_parking_lot_parkinglot_unpark_is_not_full(){
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(0);
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        pakingLotList.add(parkingLot2);
+        Receipt receipt = parkingLot1.park(new Car());
+        parkingLot1.unPark(receipt);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        try {
+            parkingBoy.parking(new Car());
+        } catch (ParkingLotFullException exception) {
+            fail("should park successfully");
+        }
+
+    }
 
 }
