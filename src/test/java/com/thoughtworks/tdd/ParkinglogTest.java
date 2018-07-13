@@ -8,13 +8,17 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 public class ParkinglogTest {
     @Test
     public void should_park_successfully_given_parking_lot_is_not_full() {
         ParkingLot parkingLot = new ParkingLot(1);
-
+        boolean b = parkingLot.isFull();
         try {
             parkingLot.park(new Car());
         } catch (ParkingLotFullException exception) {
@@ -26,19 +30,16 @@ public class ParkinglogTest {
     @Test
     public void should_park_failed_given_parking_lot_is_full() {
         ParkingLot parkingLot = new ParkingLot(0);
-
         try {
             parkingLot.park(new Car());
-            fail("should park successfully");
         } catch (ParkingLotFullException exception) {
-
+            fail("should park successfully");
         }
     }
 
     @Test
     public void should_get_specific_car_when_call_unPark_given_receipt_is_right() {
         ParkingLot parkingLot = new ParkingLot(1);
-
         Car theCar = new Car();
         Receipt receipt = parkingLot.park(theCar);
 
@@ -89,34 +90,45 @@ public class ParkinglogTest {
 
     }
     //单次停车
-    @Test
-    public void should_be_successfully_given_parking_lot_is_not_full() {
-        ParkingLot parkingLot1 = new ParkingLot(1);
-        List<ParkingLot> pakingLotList = new ArrayList<>();
-        pakingLotList.add(parkingLot1);
-        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
-        try {
-            parkingBoy.parking(new Car());
-        } catch (ParkingLotFullException exception) {
-            fail("should park successfully");
-        }
-
-    }
+//    @Test
+//    public void should_be_successfully_given_parking_lot_is_not_full() {
+//        Car car = new Car();
+//        ParkingLot parkingLot = mock(ParkingLot.class);
+//        when(parkingLot.isFull()).thenReturn(false);
+//        when(parkingLot.park(car)).thenReturn(new Receipt());
+//        List<ParkingLot> pakingLotList = new ArrayList<>();
+//        pakingLotList.add(parkingLot);
+//        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+//        try {
+//            parkingBoy.parking(car);
+//        } catch (ParkingLotFullException exception) {
+//            fail("should park successfully");
+//        }
+//
+//    }
     //多次停车，不够车位
-    @Test
-    public void should_be_failed_given_parking_lot_is_full() {
-        ParkingLot parkingLot1 = new ParkingLot(1);
-        List<ParkingLot> pakingLotList = new ArrayList<>();
-        pakingLotList.add(parkingLot1);
-        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
-        try {
-            parkingBoy.parking(new Car());
-            parkingBoy.parking(new Car());
-        } catch (ParkingLotFullException exception) {
-            fail("should park successfully");
-        }
-
-    }
+//    @Test
+//    public void should_be_failed_given_parking_lot_is_full() {
+//        Car car = new Car();
+//        Car car1 = new Car();
+//        ParkingLot parkingLot = mock(ParkingLot.class);
+//        when(parkingLot.isFull()).thenReturn(false,false);
+//        when(parkingLot.park(car)).thenReturn(new Receipt());
+////        when(parkingLot.park(car1)).thenReturn(new Receipt());
+//        List<ParkingLot> pakingLotList = new ArrayList<>();
+//        pakingLotList.add(parkingLot);
+//        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+//
+//        try {
+//            parkingBoy.parking(car);
+//            parkingBoy.parking(car1);
+//            verify(parkingLot.park(car));
+//            verify(parkingLot.park(car1));
+//        } catch (ParkingLotFullException exception) {
+//            fail("should park successfully");
+//        }
+//
+//    }
     //多次停车
     @Test
     public void should_be_successfully_given_parking_lot_parkinglot_second_is_not_full() {
@@ -206,5 +218,22 @@ public class ParkinglogTest {
 
     }
 
+    @Test
+    public void should_be_true_when_call_check_input_1(){
+        Main main = new Main();
+        int input = 1;
+        assertThat(main.checkInput(input),is(true));
+    }
+
+
+    @Test
+    public void should_be_false_when_call_check_input_3(){
+        Main main = new Main();
+        int input = 3;
+        assertThat(main.checkInput(input),is(false));
+    }
+
+
 
 }
+
