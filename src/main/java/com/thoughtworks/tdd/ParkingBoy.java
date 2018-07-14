@@ -4,6 +4,15 @@ import java.util.List;
 
 public class ParkingBoy {
     private List<ParkingLot> pakingLotList;
+    private int parkCount;
+
+    public int getParkCount() {
+        return parkCount;
+    }
+
+    public void setParkCount(int parkCount) {
+        this.parkCount = parkCount;
+    }
 
     public ParkingBoy(List<ParkingLot> pakingLotList) {
         this.pakingLotList = pakingLotList;
@@ -31,5 +40,15 @@ public class ParkingBoy {
         }
         if(car==null) throw new NotTrueReceiptException();
         return car;
+    }
+
+    public Boolean allParkIsFull() {
+        boolean flag = true;
+        for(ParkingLot parkingLot:this.pakingLotList){
+            if(!parkingLot.isFull()){
+                flag = false;
+            }
+        }
+        return flag;
     }
 }

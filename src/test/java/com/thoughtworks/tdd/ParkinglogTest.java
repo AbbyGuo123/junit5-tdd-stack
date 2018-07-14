@@ -4,24 +4,19 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 public class ParkinglogTest {
     @Test
     public void should_park_successfully_given_parking_lot_is_not_full() {
         ParkingLot parkingLot = new ParkingLot(1);
-        boolean b = parkingLot.isFull();
+
         try {
-            parkingLot.park(mock(Car.class));
+            parkingLot.park(new Car());
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         }
@@ -31,8 +26,9 @@ public class ParkinglogTest {
     @Test
     public void should_park_failed_given_parking_lot_is_full() {
         ParkingLot parkingLot = new ParkingLot(0);
+
         try {
-            parkingLot.park(mock(Car.class));
+            parkingLot.park(new Car());
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         }
@@ -40,11 +36,12 @@ public class ParkinglogTest {
 
     @Test
     public void should_get_specific_car_when_call_unPark_given_receipt_is_right() {
-        Car car =mock(Car.class);
-
         ParkingLot parkingLot = new ParkingLot(1);
-        Receipt receipt = parkingLot.park(car);
-        assertThat(parkingLot.unPark(receipt), is(car));
+
+        Car theCar = new Car();
+        Receipt receipt = parkingLot.park(theCar);
+
+        assertThat(parkingLot.unPark(receipt), is(theCar));
 
     }
 
@@ -64,16 +61,17 @@ public class ParkinglogTest {
 
     @Test
     public void should_be_false_when_call_isFull_given_a_full_parking_lot_take_out_a_car() {
-        Car car =mock(Car.class);
         ParkingLot parkingLot = new ParkingLot(1);
-        Receipt receipt = parkingLot.park(car);
+
+        Car theCar = new Car();
+        Receipt receipt = parkingLot.park(theCar);
         parkingLot.unPark(receipt);
 
         assertThat(parkingLot.isFull(), is(false));
     }
 
     public static void shoudNotThrowException() {
-        throw new ParkingLotFullException();
+//        throw new ParkingLotFullException();
     }
 
     @Test
@@ -89,10 +87,6 @@ public class ParkinglogTest {
         System.out.println("Hello I am called");
 
     }
-
-
-
-
 
 }
 

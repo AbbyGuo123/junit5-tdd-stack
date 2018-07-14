@@ -5,6 +5,9 @@ import java.util.UUID;
 public class Receipt {
     UUID uuid ;
 
+    public Receipt() {
+    }
+
     public Receipt(UUID uuid) {
         this.uuid = uuid;
     }
