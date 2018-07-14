@@ -100,6 +100,27 @@ public class ParkingBoyTest {
 
 
     }
+
+    //无效车票
+    @Test
+    public void should_throw_exception_when_call_unPark_given_receipt_is_not_right_by_parkingBoy() {
+        Receipt receipt = new Receipt();
+        ParkingLot parkingLot1 = mock(ParkingLot.class);
+        when(parkingLot1.isFull()).thenReturn(false);
+        when(parkingLot1.isTheCarInTheParkingLot(receipt)).thenReturn(false);
+        when(parkingLot1.unPark(receipt)).thenThrow(new NotTrueReceiptException());
+        List<ParkingLot> pakingLotList = new ArrayList<>();
+        pakingLotList.add(parkingLot1);
+        ParkingBoy parkingBoy = new ParkingBoy(pakingLotList);
+        try {
+
+            parkingBoy.unPark(receipt);
+        }catch (NotTrueReceiptException exception){
+            fail("the receipt is not true");
+        }
+
+
+    }
     //多次取车
     @Test
     public void should_be_true_when_callpark_2_unPark_the_first_one() {
@@ -195,7 +216,7 @@ public class ParkingBoyTest {
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         } catch (NotTrueReceiptException exception) {
-            fail("The Reciept is Used");
+            fail("The Reciept is not true");
         }
 
     }
