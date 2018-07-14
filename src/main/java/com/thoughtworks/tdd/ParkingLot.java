@@ -21,7 +21,11 @@ public class ParkingLot {
 
 
     public Car unPark(Receipt receipt) {
-        return map.remove(receipt);
+        if(isTheCarInTheParkingLot(receipt)) {
+            return map.remove(receipt);
+        }
+        else throw new NotTrueReceiptException();
+
     }
 
     public boolean isFull() {
