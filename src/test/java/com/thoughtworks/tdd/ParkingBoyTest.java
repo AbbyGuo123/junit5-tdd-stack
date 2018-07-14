@@ -5,6 +5,7 @@ import org.mockito.InOrder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.*;
 
 public class ParkingBoyTest {
+
     //单次停车
     @Test
     public void should_be_successfully_given_parking_lot_is_not_full() {
@@ -100,7 +102,6 @@ public class ParkingBoyTest {
 
 
     }
-
     //无效车票
     @Test
     public void should_throw_exception_when_call_unPark_given_receipt_is_not_right_by_parkingBoy() {
@@ -153,6 +154,8 @@ public class ParkingBoyTest {
             verify(parkingLot2).park(car2);
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
+        } catch (NotTrueReceiptException exception) {
+            fail("The Reciept is Used");
         }
 
     }
@@ -188,8 +191,10 @@ public class ParkingBoyTest {
             inOrder.verify(parkingLot1).park(car1);
             inOrder.verify(parkingLot1).park(car1);
 
-        } catch (ParkingLotFullException exception) {
+        }catch (ParkingLotFullException exception) {
             fail("should park successfully");
+        } catch (NotTrueReceiptException exception) {
+            fail("The Reciept is Used");
         }
 
     }
@@ -216,9 +221,12 @@ public class ParkingBoyTest {
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         } catch (NotTrueReceiptException exception) {
-            fail("The Reciept is not true");
+            fail("The Reciept is Used");
         }
 
     }
+
+
+
 
 }
