@@ -1,13 +1,11 @@
 package com.thoughtworks.tdd;
 
+import org.hamcrest.core.IsEqual;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,7 +44,8 @@ public class MainTest {
         computer.inputPark(parkingBoy);
         verify(parkingBoy).parking(Mockito.any());
 
-        verify(out).print("停车成功，您的小票是：\n" + "fef8e384-8738-11e8-adc0-fa7ae01bbebc");
+        verify(out).println("请输入车牌号:");
+        verify(out).println("停车成功，您的小票是：\n" + "fef8e384-8738-11e8-adc0-fa7ae01bbebc");
 
 
     }
@@ -67,7 +66,7 @@ public class MainTest {
         Computer computer = new Computer();
         computer.inputPark(parkingBoy);
 
-        verify(out).print("车已停满，请晚点再来");
+        verify(out).println("车已停满，请晚点再来");
 
 
     }
@@ -105,7 +104,8 @@ public class MainTest {
         verify(parkingBoy).parking(Mockito.any());
         verify(parkingBoy).unPark(Mockito.any());
 
-        verify(out).print("车已取出，您的车牌号是: "+car1.getId()+"\n");
+        verify(out).println("请输入车牌号:");
+        verify(out).println("车已取出，您的车牌号是: "+car1.getId());
 
 
     }
@@ -143,7 +143,7 @@ public class MainTest {
         verify(parkingBoy).parking(Mockito.any());
         verify(parkingBoy).unPark(Mockito.any());
 
-        verify(out).print("非法小票，无法取出车，请查证后再输\n");
+        verify(out).println("非法小票，无法取出车，请查证后再输");
 
 
     }
@@ -165,9 +165,8 @@ public class MainTest {
 
         verify(parkingBoy).allParkIsFull();
     }
-    /*
     @Test
-    public void should_call_inputUnPark_when_call_inputPark_input_2(){
+    public void should_call_inputUnPark_when_call_inputPark_input_2() throws IOException {
 
 
         PrintStream out = mock(PrintStream.class);
@@ -175,20 +174,27 @@ public class MainTest {
         when(parkingBoy.unPark(Mockito.any())).thenReturn(new Car());
         System.setOut(out);
 
+        //BufferedReader bufferedReader = org.mockito.Mockito.mock(BufferedReader.class);
+       // when(bufferedReader.read()).thenReturn(2);
+        //when(bufferedReader.readLine()).thenReturn("1");
+
+
         Computer computer = new Computer();
-        String input1 ="2\r1234";
+        String input1 ="2";
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);
+
+        String input2 ="1234";
+        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
+        System.setIn(in2);
 
         when(parkingBoy.unPark(Mockito.any())).thenThrow(new NotTrueReceiptException());
         computer.inputOutput(parkingBoy);
 
 
-
-
         verify(parkingBoy).unPark(Mockito.any());
     }
-*/
+
     @Test
     public void should_call_Error_when_call_inputPark_input_2(){
 
