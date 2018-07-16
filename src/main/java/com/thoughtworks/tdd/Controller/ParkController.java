@@ -71,4 +71,29 @@ public class ParkController {
     public void Not(){
         response.send("非法指令，请查证后再输");
     }
+
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    public ParkingBoy getParkingBoy() {
+        return parkingBoy;
+    }
+
+    public void setParkingBoy(ParkingBoy parkingBoy) {
+        this.parkingBoy = parkingBoy;
+    }
 }

@@ -7,85 +7,31 @@ import com.thoughtworks.tdd.model.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ParkManagerController {
-
-    private Response response;
-
-    private Request request;
-
-    private ParkingBoy parkingBoy;
+public class ParkManagerController extends ParkController{
 
     private List<ParkingLot> parkingLotList;
 
     public ParkManagerController(Request request, Response response, ParkingBoy parkingBoy,List<ParkingLot> parkingLotList) {
-        this.request = request;
-        this.response = response;
-        this.parkingBoy = parkingBoy;
+        super(request,response,parkingBoy);
         this.parkingLotList = parkingLotList;
     }
 
 
-    public String parkpage() {
-        if(!parkingBoy.allParkIsFull()) {
-            response.send("请输入车牌号:");
-            return "park";
-        }else {
-            response.send("车已停满，请晚点再来");
-            return "isFull";
-        }
-    }
-
-    public void park() {
-        String carId = request.getCommand();
-        Car car = new Car(carId);
-        Receipt receipt = parkingBoy.parking(car);
-        parkSuccess(receipt);
-    }
-
-    public void unpark(){
-        String receiptId = request.getCommand();
-        try {
-            Receipt receipt3 = new Receipt(receiptId);
-            Car car2 = parkingBoy.unPark(receipt3);
-            unparkSuccessPage(car2.getId());
-        }catch (NotTrueReceiptException e){
-            unparkFailPage();
-        }
-    }
-
-
-    public void parkSuccess(Receipt receipt) {
-        response.send("停车成功，您的小票是：\n" + receipt.getUuid());
-    }
-
-    public void unparkPage(){
-        response.send("请输入小票编号：");
-    }
-
-    public void unparkSuccessPage(String carID){
-        response.send("车已取出，您的车牌号是: "+carID);
-    }
-
-    public void unparkFailPage(){
-        response.send("非法小票，无法取出车，请查证后再输");
-    }
 
     public void main2Page(){
-        response.send("1. 停车\n" + "2. 取车 \n" + "请输入您要进行的操作：");
+        super.getResponse().send("1. 停车\n" + "2. 取车 \n" + "请输入您要进行的操作：");
     }
 
-    public void Not(){
-        response.send("非法指令，请查证后再输");
-    }
+
 
     public void mainPage(){
-        response.send("1.停车服务\n" +
+        super.getResponse().send("1.停车服务\n" +
                 "2.停车场管理\n" +
                 "请输入您要进入的页面：");
     }
 
     public void packManagerPage(){
-        response.send("1.查看停车场详情\n" +
+        super.getResponse().send("1.查看停车场详情\n" +
                 "2.添加停车场\n" +
                 "3.删除停车场");
     }
@@ -93,7 +39,7 @@ public class ParkManagerController {
 
     //删除停车场
     public void deleteParkingById() {
-        String parkId = request.getCommand();
+        String parkId = super.getRequest().getCommand();
         List<ParkingLot> list = parkingLotList.stream().filter(parkingLot -> parkingLot.getId().equals(parkId)).collect(Collectors.toList());
         if(list.size()>0) {
             ParkingLot parkingLot1 = list.get(0);
@@ -111,20 +57,20 @@ public class ParkManagerController {
 
     }
 
-    public  void deleteParkByIdPage(){response.send("请输入需要删除的被管理停车场ID:");}
+    public  void deleteParkByIdPage(){super.getResponse().send("请输入需要删除的被管理停车场ID:");}
     public void deleteParkByIdFailPageNotFound(){
-        response.send("停车场添加失败，原因：此停车场不存在！");
+        super.getResponse().send("停车场添加失败，原因：此停车场不存在！");
     }
     public void deleteParkByIdFailPagehasCar(){
-        response.send("此停车场中，依然停有汽车，无法删除！");
+        super.getResponse().send("此停车场中，依然停有汽车，无法删除！");
     }
     public void deleteParkByIdSuccess(){
-        response.send("停车场删除成功！");
+        super.getResponse().send("停车场删除成功！");
     }
 
     //添加停车场
     public void addParkingLotByNameAndSize() {
-        String input = request.getCommand();
+        String input = super.getRequest().getCommand();
         String[] inputArray = input.split(",");
         int size = Integer.parseInt(inputArray[1]);
         ParkingLot parkingLot = new ParkingLot("003",inputArray[0],size,0);
@@ -132,8 +78,8 @@ public class ParkManagerController {
         addParkSuccess();
     }
 
-    public void addParkByNameAndSizePage(){response.send("请输入你套添加的停车场信息（格式为：名称，车位）：");}
-    public void addParkSuccess(){response.send("停车场添加成功！");}
+    public void addParkByNameAndSizePage(){super.getResponse().send("请输入你套添加的停车场信息（格式为：名称，车位）：");}
+    public void addParkSuccess(){super.getResponse().send("停车场添加成功！");}
     //查看停车场信息
 
     public void generateParkingDetails() {
@@ -155,7 +101,7 @@ public class ParkManagerController {
                 "总剩余车位："+allRelaxSize+"（个）";
         showParkingDetails(parkingDetails);
     }
-    public void showParkingDetails(String parkingDetails){response.send(parkingDetails);}
+    public void showParkingDetails(String parkingDetails){super.getResponse().send(parkingDetails);}
 
 
 

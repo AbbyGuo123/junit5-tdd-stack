@@ -109,8 +109,6 @@ public class ParkManagerRouter {
     }
 
 
-
-
     public String handleParkPage(){
         parkManagerController.park();
         currentPage = "main";

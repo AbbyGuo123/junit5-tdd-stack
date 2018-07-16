@@ -4,7 +4,7 @@ import com.thoughtworks.tdd.Controller.ParkController;
 import com.thoughtworks.tdd.model.Request;
 
 public class ParkRouter {
-    com.thoughtworks.tdd.Controller.ParkController ParkController;
+    public ParkController ParkController;
     String currentPage ;
 
     public ParkRouter(ParkController ParkController, String currentPage) {
