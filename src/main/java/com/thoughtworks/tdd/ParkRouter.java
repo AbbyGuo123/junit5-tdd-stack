@@ -1,17 +1,20 @@
 package com.thoughtworks.tdd;
 
-public class Router {
-    Controller controller ;
+import com.thoughtworks.tdd.Controller.ParkController;
+import com.thoughtworks.tdd.model.Request;
+
+public class ParkRouter {
+    com.thoughtworks.tdd.Controller.ParkController ParkController;
     String currentPage ;
 
-    public Router(Controller controller, String currentPage) {
-        this.controller = controller;
+    public ParkRouter(ParkController ParkController, String currentPage) {
+        this.ParkController = ParkController;
         this.currentPage = currentPage;
         forwardMainPage();
     }
 
     public void forwardMainPage(){
-        controller.mainPage();
+        ParkController.mainPage();
     }
 
     public void handleCommand(Request request){
@@ -39,14 +42,14 @@ public class Router {
     public String handleMainPage(String status,String commands){
         switch (commands){
             case "1":
-                status = controller.parkpage();
+                status = ParkController.parkpage();
                 break;
             case "2":
-                controller.unparkPage();
+                ParkController.unparkPage();
                 status = "unpark";
                 break;
             default:
-                controller.Not();
+                ParkController.Not();
                 break;
         }
         return status;
@@ -54,13 +57,13 @@ public class Router {
 
 
     public String handleParkPage(){
-        controller.park();
+        ParkController.park();
         currentPage = "main";
         return currentPage;
     }
 
     public String handleUnParkPage(){
-        controller.unpark();
+        ParkController.unpark();
         currentPage = "main";
         return currentPage;
     }

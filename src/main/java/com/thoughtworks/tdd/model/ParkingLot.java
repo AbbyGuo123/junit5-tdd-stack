@@ -1,4 +1,6 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.model;
+
+import com.thoughtworks.tdd.ParkingLotFullException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,13 +29,13 @@ public class ParkingLot {
             throw new ParkingLotFullException();
         UUID uuid = UUID.randomUUID();
         Receipt reciept = new Receipt(uuid.toString());
-        map.put(reciept.uuid, car);
+        map.put(reciept.getUuid(), car);
         return reciept;
     }
 
 
     public Car unPark(Receipt receipt) {
-        return map.remove(receipt.uuid);
+        return map.remove(receipt.getUuid());
     }
 
     public boolean isFull() {
@@ -41,7 +43,7 @@ public class ParkingLot {
     }
 
     public boolean isTheCarInTheParkingLot(Receipt receipt) {
-        return this.map.get(receipt.uuid)!= null;
+        return this.map.get(receipt.getUuid())!= null;
     }
 
     public String getId() {

@@ -1,11 +1,14 @@
 package com.thoughtworks.tdd;
 
+import com.thoughtworks.tdd.model.Car;
+import com.thoughtworks.tdd.model.ParkingBoy;
+import com.thoughtworks.tdd.model.ParkingLot;
+import com.thoughtworks.tdd.model.Receipt;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.model;
 
 public class Response {
     public void send(String message){

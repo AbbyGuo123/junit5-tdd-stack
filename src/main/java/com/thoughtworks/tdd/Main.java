@@ -1,11 +1,14 @@
 package com.thoughtworks.tdd;
 
+import com.thoughtworks.tdd.Controller.ParkManagerController;
+import com.thoughtworks.tdd.model.ParkingBoy;
+import com.thoughtworks.tdd.model.ParkingLot;
+import com.thoughtworks.tdd.model.Request;
+import com.thoughtworks.tdd.model.Response;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.UUID;
-
-import static sun.nio.ch.IOStatus.EOF;
 
 public class Main {
 
@@ -15,17 +18,19 @@ public class Main {
         Response response = new Response();
         String currentPage = "main";
 
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot("001","西南停车场",28,8);
+        ParkingLot parkingLot1 = new ParkingLot("002","西南停车场",28,0);
         List<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot);
+        parkingLotList.add(parkingLot1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
 
-        Controller controller = new Controller(request,response,parkingBoy);
-        Router router = new Router(controller,currentPage);
+        ParkManagerController parkManagerController = new ParkManagerController(request,response,parkingBoy,parkingLotList);
+        ParkManagerRouter parkManagerRouter = new ParkManagerRouter(parkManagerController,currentPage);
         while (true) {
             String command = scanner.next();
             request.setCommand(command);
-            router.handleCommand(request);
+            parkManagerRouter.handleCommand(request);
         }
     }
 }

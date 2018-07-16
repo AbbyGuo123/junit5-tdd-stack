@@ -1,4 +1,7 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.model;
+
+import com.thoughtworks.tdd.NotTrueReceiptException;
+import com.thoughtworks.tdd.ParkingLotFullException;
 
 import java.util.List;
 

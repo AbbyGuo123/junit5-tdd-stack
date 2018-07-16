@@ -1,7 +1,10 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.Controller;
 
 
-public class Controller {
+import com.thoughtworks.tdd.*;
+import com.thoughtworks.tdd.model.*;
+
+public class ParkController {
 
     private Response response;
 
@@ -9,7 +12,7 @@ public class Controller {
 
     ParkingBoy parkingBoy;
 
-    public Controller(Request request,Response response,ParkingBoy parkingBoy) {
+    public ParkController(Request request, Response response, ParkingBoy parkingBoy) {
         this.request = request;
         this.response = response;
         this.parkingBoy = parkingBoy;
@@ -46,7 +49,7 @@ public class Controller {
 
 
     public void parkSuccess(Receipt receipt) {
-        response.send("停车成功，您的小票是：\n" + receipt.uuid);
+        response.send("停车成功，您的小票是：\n" + receipt.getUuid());
     }
 
     public void unparkPage(){
