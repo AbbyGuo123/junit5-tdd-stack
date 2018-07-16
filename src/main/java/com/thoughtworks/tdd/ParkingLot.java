@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class ParkingLot {
     private int size;
-    private Map<UUID, Car> map = new HashMap<>();
+    private Map<String, Car> map = new HashMap<>();
 
     public ParkingLot(int size) {
         this.size = size;
@@ -16,7 +16,7 @@ public class ParkingLot {
         if (isFull())
             throw new ParkingLotFullException();
         UUID uuid = UUID.randomUUID();
-        Receipt reciept = new Receipt(uuid);
+        Receipt reciept = new Receipt(uuid.toString());
         map.put(reciept.uuid, car);
         return reciept;
     }

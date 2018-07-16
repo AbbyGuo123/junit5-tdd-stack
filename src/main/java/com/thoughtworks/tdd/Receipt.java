@@ -3,12 +3,12 @@ package com.thoughtworks.tdd;
 import java.util.UUID;
 
 public class Receipt {
-    UUID uuid ;
+    String uuid ;
 
     public Receipt() {
     }
 
-    public Receipt(UUID uuid) {
+    public Receipt(String uuid) {
         this.uuid = uuid;
     }
 }

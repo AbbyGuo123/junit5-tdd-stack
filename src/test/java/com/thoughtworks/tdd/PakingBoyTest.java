@@ -206,17 +206,17 @@ public class PakingBoyTest {
 //
 //        @Test
 //    public void should_be_true_when_call_check_input_1(){
-//        Computer Computer = new Computer();
+//        Main Main = new Main();
 //        int input = 1;
-//        assertThat(Computer.checkInput(input),is(true));
+//        assertThat(Main.checkInput(input),is(true));
 //    }
 //
 //
 //    @Test
 //    public void should_be_false_when_call_check_input_3(){
-//        Computer Computer = new Computer();
+//        Main Main = new Main();
 //        int input = 3;
-//        assertThat(Computer.checkInput(input),is(false));
+//        assertThat(Main.checkInput(input),is(false));
 //    }
 
 }
