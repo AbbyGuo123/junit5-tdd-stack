@@ -1,8 +1,10 @@
 package com.thoughtworks.tdd.Controller;
 
 
-import com.thoughtworks.tdd.*;
-import com.thoughtworks.tdd.model.*;
+import com.thoughtworks.tdd.core.ParkingBoy;
+import com.thoughtworks.tdd.core.ParkingLot;
+import com.thoughtworks.tdd.sell.Request;
+import com.thoughtworks.tdd.sell.Response;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +13,7 @@ public class ParkManagerController extends ParkController{
 
     private List<ParkingLot> parkingLotList;
 
-    public ParkManagerController(Request request, Response response, ParkingBoy parkingBoy,List<ParkingLot> parkingLotList) {
+    public ParkManagerController(Request request, Response response, ParkingBoy parkingBoy, List<ParkingLot> parkingLotList) {
         super(request,response,parkingBoy);
         this.parkingLotList = parkingLotList;
     }

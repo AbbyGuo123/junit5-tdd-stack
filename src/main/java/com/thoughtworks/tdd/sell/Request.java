@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd.model;
+package com.thoughtworks.tdd.sell;
 
 import java.util.Scanner;
 

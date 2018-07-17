@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.core;
 
 public class NotTrueReceiptException extends RuntimeException{
 }

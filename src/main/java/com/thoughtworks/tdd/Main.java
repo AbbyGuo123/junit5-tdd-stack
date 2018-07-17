@@ -1,10 +1,10 @@
 package com.thoughtworks.tdd;
 
 import com.thoughtworks.tdd.Controller.ParkManagerController;
-import com.thoughtworks.tdd.model.ParkingBoy;
-import com.thoughtworks.tdd.model.ParkingLot;
-import com.thoughtworks.tdd.model.Request;
-import com.thoughtworks.tdd.model.Response;
+import com.thoughtworks.tdd.core.ParkingBoy;
+import com.thoughtworks.tdd.core.ParkingLot;
+import com.thoughtworks.tdd.sell.Request;
+import com.thoughtworks.tdd.sell.Response;
 
 import java.util.ArrayList;
 import java.util.List;

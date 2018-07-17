@@ -1,7 +1,7 @@
 package com.thoughtworks.tdd;
 
 import com.thoughtworks.tdd.Controller.ParkController;
-import com.thoughtworks.tdd.model.Request;
+import com.thoughtworks.tdd.sell.Request;
 
 public class ParkRouter {
     public ParkController ParkController;

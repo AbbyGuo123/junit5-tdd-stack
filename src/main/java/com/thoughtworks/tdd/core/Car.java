@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd.model;
+package com.thoughtworks.tdd.core;
 
 public class Car {
     private String id ;

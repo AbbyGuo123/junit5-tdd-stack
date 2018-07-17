@@ -1,6 +1,4 @@
-package com.thoughtworks.tdd.model;
-
-import com.thoughtworks.tdd.ParkingLotFullException;
+package com.thoughtworks.tdd.core;
 
 import java.util.HashMap;
 import java.util.Map;

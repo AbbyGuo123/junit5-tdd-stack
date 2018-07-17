@@ -1,8 +1,12 @@
 package com.thoughtworks.tdd.Controller;
 
 
-import com.thoughtworks.tdd.*;
-import com.thoughtworks.tdd.model.*;
+import com.thoughtworks.tdd.core.Car;
+import com.thoughtworks.tdd.core.NotTrueReceiptException;
+import com.thoughtworks.tdd.core.ParkingBoy;
+import com.thoughtworks.tdd.core.Receipt;
+import com.thoughtworks.tdd.sell.Request;
+import com.thoughtworks.tdd.sell.Response;
 
 public class ParkController {
 
