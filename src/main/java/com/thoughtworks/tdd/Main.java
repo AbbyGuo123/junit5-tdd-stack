@@ -43,8 +43,12 @@ public class Main {
         router.registerRoute("main/1/2/*", new UnParkingController(request, response, boy));
 
         router.registerRoute("main/2", new ParkManagerMainController(request, response, boy));
+        router.registerRoute("main/2/1", new ShowParkDetailsController(request, response, boy));
         router.registerRoute("main/2/2", new GotoAddParkController(request, response, boy));
+        router.registerRoute("main/2/3", new GoToDeleteParkController(request, response, boy));
         router.registerRoute("main/2/2/*", new AddParkController(request, response, boy));
+        router.registerRoute("main/2/3/*", new DeleteParkController(request, response, boy));
+
         return router;
     }
 }

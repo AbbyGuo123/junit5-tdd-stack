@@ -45,7 +45,7 @@ public class Router {
     }
 
     public String translateRequestInput(Request request){
-        if(request.getCommand().equals("1")||request.getCommand().equals("2")){
+        if(request.getCommand().equals("1")||request.getCommand().equals("2")||request.getCommand().equals("3")){
             return request.getCommand();
         }
         else

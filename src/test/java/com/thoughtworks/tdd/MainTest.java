@@ -1,7 +1,12 @@
 package com.thoughtworks.tdd;
 
 import com.thoughtworks.tdd.Controller.ParkController;
-import com.thoughtworks.tdd.model.*;
+import com.thoughtworks.tdd.core.Car;
+import com.thoughtworks.tdd.core.NotTrueReceiptException;
+import com.thoughtworks.tdd.core.ParkingBoy;
+import com.thoughtworks.tdd.core.Receipt;
+import com.thoughtworks.tdd.sell.Request;
+import com.thoughtworks.tdd.sell.Response;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

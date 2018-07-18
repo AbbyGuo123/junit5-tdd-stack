@@ -1,8 +1,9 @@
 package com.thoughtworks.tdd;
 
-import com.thoughtworks.tdd.model.Car;
-import com.thoughtworks.tdd.model.ParkingLot;
-import com.thoughtworks.tdd.model.Receipt;
+import com.thoughtworks.tdd.core.Car;
+import com.thoughtworks.tdd.core.ParkingLot;
+import com.thoughtworks.tdd.core.ParkingLotFullException;
+import com.thoughtworks.tdd.core.Receipt;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;

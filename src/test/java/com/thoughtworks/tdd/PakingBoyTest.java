@@ -1,9 +1,6 @@
 package com.thoughtworks.tdd;
 
-import com.thoughtworks.tdd.model.Car;
-import com.thoughtworks.tdd.model.ParkingBoy;
-import com.thoughtworks.tdd.model.ParkingLot;
-import com.thoughtworks.tdd.model.Receipt;
+import com.thoughtworks.tdd.core.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 
