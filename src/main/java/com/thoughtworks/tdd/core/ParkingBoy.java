@@ -14,6 +14,14 @@ public class ParkingBoy {
         this.parkCount = parkCount;
     }
 
+    public List<ParkingLot> getPakingLotList() {
+        return pakingLotList;
+    }
+
+    public void setPakingLotList(List<ParkingLot> pakingLotList) {
+        this.pakingLotList = pakingLotList;
+    }
+
     public ParkingBoy(List<ParkingLot> pakingLotList) {
         this.pakingLotList = pakingLotList;
     }
