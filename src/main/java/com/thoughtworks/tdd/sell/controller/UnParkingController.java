@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd.Controller;
+package com.thoughtworks.tdd.sell.controller;
 
 import com.thoughtworks.tdd.core.Car;
 import com.thoughtworks.tdd.core.NotTrueReceiptException;
@@ -7,7 +7,7 @@ import com.thoughtworks.tdd.core.Receipt;
 import com.thoughtworks.tdd.sell.Request;
 import com.thoughtworks.tdd.sell.Response;
 
-public class UnParkingController implements BaseController{
+public class UnParkingController implements BaseController {
     private final Request request;
     private final Response response;
     private ParkingBoy parkingBoy;

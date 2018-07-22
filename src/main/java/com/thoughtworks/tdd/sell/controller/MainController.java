@@ -1,15 +1,15 @@
-package com.thoughtworks.tdd.Controller;
+package com.thoughtworks.tdd.sell.controller;
 
 import com.thoughtworks.tdd.core.ParkingBoy;
 import com.thoughtworks.tdd.sell.Request;
 import com.thoughtworks.tdd.sell.Response;
 
-public class ParkManagerMainController implements BaseController{
+public class MainController implements BaseController {
     private final Request request;
     private final Response response;
-    ParkingBoy parkingBoy ;
+    private ParkingBoy parkingBoy;
 
-    public ParkManagerMainController(Request request, Response response, ParkingBoy parkingBoy) {
+    public MainController(Request request, Response response, ParkingBoy parkingBoy) {
         this.request = request;
         this.response = response;
         this.parkingBoy = parkingBoy;
@@ -17,10 +17,10 @@ public class ParkManagerMainController implements BaseController{
 
     @Override
     public String proccess(){
-        String forwardPath="";
-        response.send("1.查看停车场详情\n" +
-                "2.添加停车场\n" +
-                "3.删除停车场");
+        String forwardPath ="";
+        response.send("1.停车服务\n" +
+                "2.停车场管理\n" +
+                "请输入您要进入的页面：");
         return forwardPath;
     }
 }

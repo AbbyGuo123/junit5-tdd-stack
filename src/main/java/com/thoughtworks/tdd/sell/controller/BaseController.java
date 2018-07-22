@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd.Controller;
+package com.thoughtworks.tdd.sell.controller;
 
 public interface BaseController {
     String proccess();

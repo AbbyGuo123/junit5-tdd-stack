@@ -1,10 +1,10 @@
-package com.thoughtworks.tdd.Controller;
+package com.thoughtworks.tdd.sell.controller;
 
 import com.thoughtworks.tdd.core.ParkingBoy;
 import com.thoughtworks.tdd.sell.Request;
 import com.thoughtworks.tdd.sell.Response;
 
-public class GoToDeleteParkController implements BaseController{
+public class GoToDeleteParkController implements BaseController {
     private final Request request;
     private final Response response;
     ParkingBoy parkingBoy;

@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.core;
 
 import com.thoughtworks.tdd.core.*;
 import org.junit.jupiter.api.Test;

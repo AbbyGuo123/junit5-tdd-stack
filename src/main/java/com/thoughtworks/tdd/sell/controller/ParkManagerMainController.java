@@ -1,15 +1,15 @@
-package com.thoughtworks.tdd.Controller;
+package com.thoughtworks.tdd.sell.controller;
 
 import com.thoughtworks.tdd.core.ParkingBoy;
 import com.thoughtworks.tdd.sell.Request;
 import com.thoughtworks.tdd.sell.Response;
 
-public class GotoAddParkController implements BaseController{
+public class ParkManagerMainController implements BaseController {
     private final Request request;
     private final Response response;
-    ParkingBoy parkingBoy;
+    ParkingBoy parkingBoy ;
 
-    public GotoAddParkController(Request request, Response response, ParkingBoy parkingBoy) {
+    public ParkManagerMainController(Request request, Response response, ParkingBoy parkingBoy) {
         this.request = request;
         this.response = response;
         this.parkingBoy = parkingBoy;
@@ -18,7 +18,9 @@ public class GotoAddParkController implements BaseController{
     @Override
     public String proccess(){
         String forwardPath="";
-        response.send("请输入你套添加的停车场信息（格式为：名称，车位）：");
+        response.send("1.查看停车场详情\n" +
+                "2.添加停车场\n" +
+                "3.删除停车场");
         return forwardPath;
     }
 }

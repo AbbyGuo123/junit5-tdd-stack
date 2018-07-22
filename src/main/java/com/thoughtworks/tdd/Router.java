@@ -1,6 +1,6 @@
 package com.thoughtworks.tdd;
 
-import com.thoughtworks.tdd.Controller.BaseController;
+import com.thoughtworks.tdd.sell.controller.BaseController;
 import com.thoughtworks.tdd.sell.Request;
 
 import java.util.HashMap;
